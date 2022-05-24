@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:39:51 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 13:42:00 by afelten          ###   ########.fr       */
+/*   Updated: 2022/05/24 14:48:50 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 			sort_simple(&a, &b);
 		else if (ft_lstsize(a) > 5)
 			sort_complex(&a, &b, size);
-		print_stack(a);
+		ft_lstclear(&a);
 	}
 	return (0);
 }
