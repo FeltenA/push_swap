@@ -1,17 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/24 14:35:34 by afelten           #+#    #+#             */
+/*   Updated: 2022/05/24 14:36:27 by afelten          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 typedef struct s_stack
 {
-    int     num;
-    struct s_stack  *next;
-}   t_stack;
+	int				num;
+	struct s_stack	*next;
+}	t_stack;
 
 typedef struct s_chunk
 {
-    int max;
-    int step;
-    int size;
-}   t_chunk;
+	int	max;
+	int	step;
+	int	size;
+}	t_chunk;
 
 #endif

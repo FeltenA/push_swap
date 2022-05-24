@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_utils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/24 13:42:36 by afelten           #+#    #+#             */
+/*   Updated: 2022/05/24 14:13:47 by afelten          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "push_swap.h"
 
@@ -38,7 +50,7 @@ void	ft_lstclear(t_stack **lst)
 	}
 }
 
-void    ft_lstadd_back(t_stack **lst, t_stack *new)
+void	ft_lstadd_back(t_stack **lst, t_stack *new)
 {
 	t_stack	*elem;
 
@@ -53,13 +65,13 @@ void    ft_lstadd_back(t_stack **lst, t_stack *new)
 	elem->next = new;
 }
 
-int compare_num_stack(t_stack *begin, int num)
+int	compare_num_stack(t_stack *begin, int num)
 {
-    while (begin)
-    {
-        if (begin->num == num)
-            return (1);
-        begin = begin->next;
-    }
-    return (0);
+	while (begin)
+	{
+		if (begin->num == num)
+			return (1);
+		begin = begin->next;
+	}
+	return (0);
 }

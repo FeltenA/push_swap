@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/24 14:13:57 by afelten           #+#    #+#             */
+/*   Updated: 2022/05/24 14:14:16 by afelten          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdio.h>
 #include "push_swap.h"
 
-void    print_stack(t_stack *a)
+void	print_stack(t_stack *a)
 {
-    printf("\ntest:\n");
-    while (a)
-    {
-        printf("%d\n", a->num);
-        a = a->next;
-    }
+	printf("\ntest:\n");
+	while (a)
+	{
+		printf("%d\n", a->num);
+		a = a->next;
+	}
 }
