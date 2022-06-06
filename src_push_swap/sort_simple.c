@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:00:03 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 14:35:01 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:22:34 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	sort_small(t_stack **a, t_stack **b, int size)
 	{
 		get_nbr_to_top(a, (*b)->num);
 		run_command(a, b, "pa");
+		get_min_to_top(a);
 		i++;
 	}
-	get_min_to_top(a);
 }
 
 void	sort_simple(t_stack **a, t_stack **b)

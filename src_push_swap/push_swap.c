@@ -6,13 +6,12 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:39:51 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 14:48:50 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:37:42 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <unistd.h>
-#include <stdio.h>
 
 int		parse_input(int argc, char *argv[], t_stack **a);
 void	ft_lstclear(t_stack **lst);
@@ -20,7 +19,15 @@ int		ft_lstsize(t_stack *lst);
 void	sort_simple(t_stack **a, t_stack **b);
 void	sort_complex(t_stack **a, t_stack **b, int size);
 
-void	print_stack(t_stack *a);
+#include <stdio.h>
+void	print_stack(t_stack *a)
+{
+	while (a)
+	{
+		printf("%d\n", a->num);
+		a = a->next;
+	}
+}
 
 int	main(int argc, char *argv[])
 {

@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:56:38 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 13:59:26 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/06 18:21:40 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,6 @@ int	get_min_stack(t_stack *a)
 	return (save);
 }
 
-void	get_nbr_to_top(t_stack **a, int nbr)
-{
-	int		size;
-	int		i;
-	t_stack	*save;
-
-	save = *a;
-	size = ft_lstsize(*a);
-	i = 0;
-	while (save && save->num < nbr)
-	{
-		i++;
-		save = save->next;
-	}
-	if (i > size / 2)
-		run_ncommand(a, 0, "rra", size - i);
-	else
-		run_ncommand(a, 0, "ra", i);
-}
-
 void	get_min_to_top(t_stack **a)
 {
 	int		size;
@@ -75,6 +55,26 @@ void	get_min_to_top(t_stack **a)
 	size = ft_lstsize(*a);
 	i = 0;
 	while (save && save->num > nbr)
+	{
+		i++;
+		save = save->next;
+	}
+	if (i > size / 2)
+		run_ncommand(a, 0, "rra", size - i);
+	else
+		run_ncommand(a, 0, "ra", i);
+}
+
+void	get_nbr_to_top(t_stack **a, int nbr)
+{
+	int		size;
+	int		i;
+	t_stack	*save;
+
+	save = *a;
+	size = ft_lstsize(*a);
+	i = 0;
+	while (save && save->num < nbr)
 	{
 		i++;
 		save = save->next;
