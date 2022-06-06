@@ -6,12 +6,12 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:42:36 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 14:13:47 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:20:43 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "push_swap.h"
+#include "checker.h"
 
 t_stack	*ft_lstnew(int num)
 {

@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/06 15:18:22 by afelten           #+#    #+#             */
+/*   Updated: 2022/06/06 15:31:06 by afelten          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
 int		ft_strcmp(const char *s1, const char *s2);
+char	*get_next_line(int fd);
 
 void	free_commands(char **commands)
 {
@@ -17,23 +30,23 @@ void	free_commands(char **commands)
 	free(commands);
 }
 
-static int  check_command(char *command)
+static int	check_command(char *command)
 {
-    int check;
+	int	check;
 
-    check = ft_strcmp(command, "sa\n") && ft_strcmp(command, "sb\n");
-    check = check && ft_strcmp(command, "ss\n") && ft_strcmp(command, "pa\n");
-    check = check && ft_strcmp(command, "pb\n") && ft_strcmp(command, "ra\n");
-    check = check && ft_strcmp(command, "rb\n") && ft_strcmp(command, "rr\n");
-    check = check && ft_strcmp(command, "rra\n") && ft_strcmp(command, "rrb\n");
-    check = check && ft_strcmp(command, "rrr\n");
-    return (check);
+	check = (ft_strcmp(command, "sa\n") && ft_strcmp(command, "sb\n"));
+	check = (check && ft_strcmp(command, "ss\n") && ft_strcmp(command, "pa\n"));
+	check = (check && ft_strcmp(command, "pb\n") && ft_strcmp(command, "ra\n"));
+	check = (check && ft_strcmp(command, "rb\n") && ft_strcmp(command, "rr\n"));
+	check = (check && ft_strcmp(command, "rra\n") && ft_strcmp(command, "rrb\n"));
+	check = (check && ft_strcmp(command, "rrr\n"));
+	return (check);
 }
 
 static int	add_command(char ***commands, char *command)
 {
 	char	**save;
-	int	i;
+	int		i;
 
 	i = 0;
 	while ((*commands)[i])
@@ -54,23 +67,25 @@ static int	add_command(char ***commands, char *command)
 	return (1);
 }
 
-int get_commands(char ***commands)
+int	get_commands(char ***commands)
 {
-    char	*command;
+	char	*command;
 
 	*commands = malloc(sizeof(char *));
 	**commands = 0;
 	if (!(*commands))
 		return (0);
-	while (command = get_next_line(0))
+	command = get_next_line(0);
+	while (command)
 	{
-        if (check_command(command))
-        {
-            free(command);
-            return (0);
-        }
+		if (check_command(command))
+		{
+			free(command);
+			return (0);
+		}
 		if (!add_command(commands, command))
 			return (0);
+		command = get_next_line(0);
 	}
 	return (1);
 }

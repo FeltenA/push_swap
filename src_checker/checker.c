@@ -1,11 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/06 15:12:58 by afelten           #+#    #+#             */
+/*   Updated: 2022/06/06 15:26:03 by afelten          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "checker.h"
+#include <unistd.h>
 
 void	run_command(t_stack **a, t_stack **b, const char *com);
-int	ft_lstsize(t_stack *lst);
+int		ft_lstsize(t_stack *lst);
 void	ft_lstclear(t_stack **lst);
 char	*get_next_line(int fd);
 void	free_commands(char **commands);
-int get_commands(char ***commands);
+int		get_commands(char ***commands);
+int		parse_input(int argc, char *argv[], t_stack **a);
 
 int	check_sort(t_stack *a, t_stack *b)
 {
@@ -58,7 +72,7 @@ int	main(int argc, char *argv[])
 		execute_commands(&a, &b, commands);
 		end_msg(a, b);
 		free_commands(commands);
-        ft_lstclear(&b);
+		ft_lstclear(&b);
 		ft_lstclear(&a);
 	}
 	return (0);

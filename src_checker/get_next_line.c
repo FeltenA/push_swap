@@ -6,12 +6,14 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 11:19:58 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/10 15:21:12 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/06 15:20:21 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
+
+#define BUFFER_SIZE 10
 
 void		*ft_calloc(size_t nmemb, size_t size);
 size_t		ft_strlen(char *str);

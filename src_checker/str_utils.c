@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   str_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/24 14:13:57 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 14:14:16 by afelten          ###   ########.fr       */
+/*   Created: 2022/05/24 13:42:18 by afelten           #+#    #+#             */
+/*   Updated: 2022/05/24 13:42:23 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "push_swap.h"
-
-void	print_stack(t_stack *a)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	printf("\ntest:\n");
-	while (a)
-	{
-		printf("%d\n", a->num);
-		a = a->next;
-	}
+	int	i;
+
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }

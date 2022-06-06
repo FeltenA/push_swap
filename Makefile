@@ -1,21 +1,37 @@
-SRCS	=	push_swap.c\
-			parse_input.c\
-			sort_simple.c\
-			sort_complex.c\
-			sort_utils.c\
-			sort_utils2.c\
-			chunk_utils.c\
-			str_utils.c\
-			commands.c\
-			run_commands.c\
-			list_utils.c\
-			test.c
+DIRP	=	src_push_swap
 
-OBJS	= ${SRCS:.c=.o}
+SRCSP	=	${DIRP}/push_swap.c\
+			${DIRP}/parse_input.c\
+			${DIRP}/sort_simple.c\
+			${DIRP}/sort_complex.c\
+			${DIRP}/sort_utils.c\
+			${DIRP}/sort_utils2.c\
+			${DIRP}/chunk_utils.c\
+			${DIRP}/str_utils.c\
+			${DIRP}/commands.c\
+			${DIRP}/run_commands.c\
+			${DIRP}/list_utils.c
+DIRC	=	src_checker
+
+SRCSC	=	${DIRC}/checker.c\
+			${DIRC}/parse_input.c\
+			${DIRC}/commands.c\
+			${DIRC}/commands_utils.c\
+			${DIRC}/get_next_line.c\
+			${DIRC}/get_next_line_utils.c\
+			${DIRC}/list_utils.c\
+			${DIRC}/run_commands.c\
+			${DIRC}/str_utils.c
+
+OBJSP	= ${SRCSP:.c=.o}
+
+OBJSC	= ${SRCSC:.c=.o}
 
 HEAD	= includes
 
 NAME	= push_swap
+
+NAMEC	= checker
 
 GCC		= gcc
 
@@ -26,18 +42,23 @@ CFLAGS	= -Wall -Wextra -Werror
 %.o:		%.c
 		${GCC} ${CFLAGS} -c $< -o $@
 
-${NAME}:	${OBJS}
-		gcc ${OBJS} -o ${NAME}
+${NAME}:	${OBJSP}
+		gcc ${OBJSP} -o ${NAME}
+
+${NAMEC}:	${OBJSC}
+		gcc	${OBJSC} -o ${NAMEC}
+
+bonus:		${NAME} ${NAMEC}
 
 all:		${NAME}
 
 clean:
-		${RM} ${OBJS} ${OBJSB}
+		${RM} ${OBJSP} ${OBJSC}
 
 fclean:		clean
-		${RM} ${NAME}
+		${RM} ${NAME} ${NAMEC}
 
 re:		fclean
 		make all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus
