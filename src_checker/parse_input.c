@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:06:11 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 14:12:09 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/06 16:53:44 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	atoi_check(const char *nptr, int *check)
 	while (*nptr >= '0' && *nptr <= '9')
 	{
 		nbr = nbr * 10 + *nptr - 48;
-		if (nbr > 2147483647 || - nbr < -2147483648)
+		if (nbr * neg > 2147483647 || nbr * neg < -2147483648)
 			*check = 0;
 		nptr++;
 	}
