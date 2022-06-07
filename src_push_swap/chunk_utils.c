@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:47:42 by afelten           #+#    #+#             */
-/*   Updated: 2022/05/24 14:13:18 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:19:28 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_last_index_chunk(t_stack *a, int max, int step)
 	index = 0;
 	while (a)
 	{
-		if (a->num >= max - step)
+		if (a->num >= max - step && a->num <= max)
 			index = i;
 		i++;
 		a = a->next;
@@ -40,7 +40,7 @@ int	get_first_index_chunk(t_stack *a, int max, int step)
 	i = 0;
 	while (a)
 	{
-		if (a->num >= max - step)
+		if (a->num >= max - step && a->num <= max)
 			return (i);
 		i++;
 		a = a->next;
@@ -68,7 +68,7 @@ int	chunk_left(t_stack *a, int max, int step)
 {
 	while (a)
 	{
-		if (a->num >= max - step)
+		if (a->num >= max - step && a->num <= max)
 			return (1);
 		a = a->next;
 	}

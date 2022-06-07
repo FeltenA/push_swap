@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:39:51 by afelten           #+#    #+#             */
-/*   Updated: 2022/06/06 18:37:42 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/07 13:52:54 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,6 @@ void	ft_lstclear(t_stack **lst);
 int		ft_lstsize(t_stack *lst);
 void	sort_simple(t_stack **a, t_stack **b);
 void	sort_complex(t_stack **a, t_stack **b, int size);
-
-#include <stdio.h>
-void	print_stack(t_stack *a)
-{
-	while (a)
-	{
-		printf("%d\n", a->num);
-		a = a->next;
-	}
-}
 
 int	main(int argc, char *argv[])
 {

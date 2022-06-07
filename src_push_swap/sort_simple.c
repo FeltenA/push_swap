@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:00:03 by afelten           #+#    #+#             */
-/*   Updated: 2022/06/06 18:22:34 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/07 13:51:28 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	run_command(t_stack **a, t_stack **b, const char *com);
 void	run_ncommand(t_stack **a, t_stack **b, const char *com, int n);
 void	get_nbr_to_top(t_stack **a, int nbr);
 void	get_min_to_top(t_stack **a);
+int		get_max_stack(t_stack *a);
 
 void	sort_three(t_stack **a)
 {
@@ -56,11 +57,14 @@ void	sort_small(t_stack **a, t_stack **b, int size)
 	sort_three(a);
 	while (i < size - 3)
 	{
-		get_nbr_to_top(a, (*b)->num);
+		if (i == 1 && (*b)->num > get_max_stack(*a))
+			get_min_to_top(a);
+		else
+			get_nbr_to_top(a, (*b)->num);
 		run_command(a, b, "pa");
-		get_min_to_top(a);
 		i++;
 	}
+	get_min_to_top(a);
 }
 
 void	sort_simple(t_stack **a, t_stack **b)
@@ -72,6 +76,6 @@ void	sort_simple(t_stack **a, t_stack **b)
 		run_command(a, b, "sa");
 	else if (size == 3)
 		sort_three(a);
-	else
+	else if (size > 3)
 		sort_small(a, b, size);
 }

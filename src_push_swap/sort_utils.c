@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:56:38 by afelten           #+#    #+#             */
-/*   Updated: 2022/06/06 18:21:40 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/07 13:52:38 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	get_min_to_top(t_stack **a)
 		run_ncommand(a, 0, "ra", i);
 }
 
-void	get_nbr_to_top(t_stack **a, int nbr)
+void	complex_get_nbr_to_top(t_stack **a, int nbr)
 {
 	int		size;
 	int		i;
@@ -74,7 +74,7 @@ void	get_nbr_to_top(t_stack **a, int nbr)
 	save = *a;
 	size = ft_lstsize(*a);
 	i = 0;
-	while (save && save->num < nbr)
+	while (save && save->num != nbr)
 	{
 		i++;
 		save = save->next;
@@ -83,4 +83,33 @@ void	get_nbr_to_top(t_stack **a, int nbr)
 		run_ncommand(a, 0, "rra", size - i);
 	else
 		run_ncommand(a, 0, "ra", i);
+}
+
+void	get_nbr_to_top(t_stack **a, int nbr)
+{
+	int		size;
+	int		i;
+	int		savenbr;
+	int		index;
+	t_stack	*save;
+
+	save = *a;
+	size = ft_lstsize(*a);
+	savenbr = 2147483647;
+	index = 0;
+	i = 0;
+	while (save)
+	{
+		if (save->num > nbr && savenbr >= save->num)
+		{
+			index = i;
+			savenbr = save->num;
+		}
+		i++;
+		save = save->next;
+	}
+	if (index > size / 2)
+		run_ncommand(a, 0, "rra", size - index);
+	else
+		run_ncommand(a, 0, "ra", index);
 }

@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 14:02:40 by afelten           #+#    #+#             */
-/*   Updated: 2022/06/06 18:37:21 by afelten          ###   ########.fr       */
+/*   Updated: 2022/06/07 12:40:48 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	get_min_to_top(t_stack **a);
 int		chunk_left(t_stack *a, int max, int step);
 void	get_closest_chunk(t_stack **a, t_stack **b, int max, int step);
 void	get_min_or_max_to_top(t_stack **b);
-void	get_nbr_to_top(t_stack **a, int nbr);
+void	complex_get_nbr_to_top(t_stack **a, int nbr);
 int		check_non_chunk(t_stack *a, int max);
 
 int	check_step_stack(t_stack *a, int max, int step)
@@ -53,7 +53,7 @@ void	get_chunk_step(t_stack *a, int max, int *step, int size)
 		if (nbr < size)
 			*step += 5;
 		else if (nbr > size + 5)
-	*step -= 5;
+			*step -= 5;
 	}
 }
 
@@ -65,13 +65,13 @@ void	sort_chunk(t_stack **a, t_stack **b, t_chunk chunk, int *lastnbr)
 		get_closest_chunk(a, b, chunk.max, chunk.step);
 	size = ft_lstsize(*b);
 	if (*lastnbr != -2147483648)
-		get_nbr_to_top(a, *lastnbr);
+		complex_get_nbr_to_top(a, *lastnbr);
+	*lastnbr = get_min_stack(*b);
 	while (size)
 	{
 		get_min_or_max_to_top(b);
 		if ((*a) && (*a)->num < (*b)->num)
 			run_command(a, 0, "ra");
-		*lastnbr = (*b)->num;
 		run_command(a, b, "pa");
 		size--;
 	}
