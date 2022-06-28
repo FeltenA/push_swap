@@ -19,34 +19,6 @@ void	get_nbr_to_top(t_stack **a, int nbr);
 void	get_min_to_top(t_stack **a);
 int		get_max_stack(t_stack *a);
 
-void	sort_three_stack(t_stack **a, int size)
-{
-	if (size == 2)
-	{
-		if (a->num > a->next->num)
-			run_command(a, 0, "sa");
-	}
-	else if (size == 3)
-	{
-		while (size != 3 || a->num > a->next->num
-				|| a->next->num > a->next-next-num)
-		{
-			if (size == 3 && a->num > a->next->num)
-				run_command(a, 0, "sa");
-			else if (size == 3 && (a->next->next->num < a->num
-						|| a->next->next->num < a->next->num))
-			{
-				run_command(a, 0, "ra");
-				size--;
-			}
-			else if (a->num > a->next->num)
-				run_command(a, 0, "sa");
-			else if (size++)
-				run_command(a, 0, "rra");
-		}
-	}
-}
-
 void	sort_three(t_stack **a)
 {
 	t_stack	*second;

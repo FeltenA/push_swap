@@ -18,6 +18,7 @@ void	ft_lstclear(t_stack **lst);
 int		ft_lstsize(t_stack *lst);
 void	sort_simple(t_stack **a, t_stack **b);
 void	sort_complex(t_stack **a, t_stack **b, int size);
+int	quick_sort_a(t_stack **a, t_stack **b, int size);
 
 int	main(int argc, char *argv[])
 {
@@ -40,7 +41,7 @@ int	main(int argc, char *argv[])
 		if (ft_lstsize(a) <= 5)
 			sort_simple(&a, &b);
 		else if (ft_lstsize(a) > 5)
-			sort_complex(&a, &b, size);
+			quick_sort_a(&a, &b, size);
 		ft_lstclear(&a);
 	}
 	return (0);
