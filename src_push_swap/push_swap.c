@@ -20,6 +20,16 @@ void	sort_simple(t_stack **a, t_stack **b);
 void	sort_complex(t_stack **a, t_stack **b, int size);
 int	quick_sort_a(t_stack **a, t_stack **b, int size);
 
+#include <stdio.h>
+void	print_list(t_stack *a)
+{
+	while (a)
+	{
+		printf("%d\n", a->num);
+		a = a->next;
+	}
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	*a;

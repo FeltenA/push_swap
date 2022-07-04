@@ -5,7 +5,7 @@ int	is_sorted_asc(t_stack *a, int size)
 	int	i;
 
 	i = 0;
-	while (i < size && a && a->next)
+	while (i < size - 1 && a && a->next)
 	{
 		if (a->num > a->next->num)
 			return (0);
@@ -20,7 +20,7 @@ int	is_sorted_desc(t_stack *a, int size)
 	int	i;
 
 	i = 0;
-	while (i < size && a && a->next)
+	while (i < size - 1 && a && a->next)
 	{
 		if (a->num < a->next->num)
 			return (0);

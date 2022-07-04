@@ -18,6 +18,7 @@ int		get_median(t_stack *a, int size);
 int		quick_sort_b(t_stack **a, t_stack **b, int size);
 int		is_sorted_asc(t_stack *a, int size);
 int		is_sorted_desc(t_stack *a, int size);
+int		ft_lstsize(t_stack *a);
 
 static void	sort_three_stack_a(t_stack **a, int size)
 {
@@ -59,7 +60,7 @@ static void	sort_three_stack_b(t_stack **a, t_stack **b, int size)
 	}
 	else if (size == 3)
 	{
-		while (size || (*a)->num > (*a)->next->num)
+		while (size)
 		{
 			if (size == 1 && (*a)->num > (*a)->next->num)
 				run_command(a, 0, "sa");
@@ -98,8 +99,9 @@ int	quick_sort_a(t_stack **a, t_stack **b, int size)
 		else if (++nb_rota)
 			run_command(a, 0, "ra");
 	}
-	while (nb_rota--)
-		run_command(a, 0, "rra");
+	if (ft_lstsize(*a) != size / 2 + size % 2)
+		while (nb_rota--)
+			run_command(a, 0, "rra");
 	return (quick_sort_a(a, b, size / 2 + size % 2)
 		&& quick_sort_b(a, b, size / 2));
 }
@@ -128,8 +130,9 @@ int	quick_sort_b(t_stack **a, t_stack **b, int size)
 		else if (++nb_rota)
 			run_command(0, b, "rb");
 	}
-	while (nb_rota--)
-		run_command(0, b, "rrb");
+	if (ft_lstsize(*b) != size / 2)
+		while (nb_rota--)
+			run_command(0, b, "rrb");
 	return (quick_sort_a(a, b, size / 2 + size % 2)
 		&& quick_sort_b(a, b, size / 2));
 }
