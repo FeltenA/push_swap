@@ -49,9 +49,9 @@ static int	check_median_down(t_stack *a, int num, int size)
 int	get_median(t_stack *a, int size)
 {
 	t_stack	*save;
-	int	i;
-	int	save_nbr_up;
-	int	save_nbr_down;
+	int		i;
+	int		save_nbr_up;
+	int		save_nbr_down;
 
 	i = 0;
 	save = a;

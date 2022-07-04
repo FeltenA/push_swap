@@ -10,7 +10,11 @@ SRCSP	=	${DIRP}/push_swap.c\
 			${DIRP}/str_utils.c\
 			${DIRP}/commands.c\
 			${DIRP}/run_commands.c\
-			${DIRP}/list_utils.c
+			${DIRP}/list_utils.c\
+			${DIRP}/quick_sort.c\
+			${DIRP}/median.c\
+			${DIRP}/quick_sort_utils.c
+
 DIRC	=	src_checker
 
 SRCSC	=	${DIRC}/checker.c\

@@ -14,8 +14,10 @@
 
 void	run_ncommand(t_stack **a, t_stack **b, const char *com, int n);
 void	run_command(t_stack **a, t_stack **b, const char *com);
-int	get_median(t_stack *a, int size);
-int	quick_sort_b(t_stack **a, t_stack **b, int size);
+int		get_median(t_stack *a, int size);
+int		quick_sort_b(t_stack **a, t_stack **b, int size);
+int		is_sorted_asc(t_stack *a, int size);
+int		is_sorted_desc(t_stack *a, int size);
 
 static void	sort_three_stack_a(t_stack **a, int size)
 {
@@ -27,12 +29,12 @@ static void	sort_three_stack_a(t_stack **a, int size)
 	else if (size == 3)
 	{
 		while (size != 3 || (*a)->num > (*a)->next->num
-				|| (*a)->next->num > (*a)->next->next->num)
+			|| (*a)->next->num > (*a)->next->next->num)
 		{
 			if (size == 3 && (*a)->num > (*a)->next->num)
 				run_command(a, 0, "sa");
 			else if (size == 3 && ((*a)->next->next->num < (*a)->num
-						|| (*a)->next->next->num < (*a)->next->num))
+					|| (*a)->next->next->num < (*a)->next->num))
 			{
 				run_command(a, 0, "ra");
 				size--;
@@ -62,9 +64,9 @@ static void	sort_three_stack_b(t_stack **a, t_stack **b, int size)
 			if (size == 1 && (*a)->num > (*a)->next->num)
 				run_command(a, 0, "sa");
 			else if (size == 1 || (size >= 2 && (*b)->num > (*b)->next->num)
-						|| (size == 3 && (*b)->next->next->num < (*b)->num))
+				|| (size == 3 && (*b)->next->next->num < (*b)->num))
 			{
-				run_command(a, 0, "pa");
+				run_command(a, b, "pa");
 				size--;
 			}
 			else
@@ -79,6 +81,8 @@ int	quick_sort_a(t_stack **a, t_stack **b, int size)
 	int	nb_elem;
 	int	nb_rota;
 
+	if (is_sorted_asc(*a, size))
+		return (1);
 	if (size <= 3)
 	{
 		sort_three_stack_a(a, size);
@@ -97,7 +101,7 @@ int	quick_sort_a(t_stack **a, t_stack **b, int size)
 	while (nb_rota--)
 		run_command(a, 0, "rra");
 	return (quick_sort_a(a, b, size / 2 + size % 2)
-			&& quick_sort_b(a, b, size / 2));
+		&& quick_sort_b(a, b, size / 2));
 }
 
 int	quick_sort_b(t_stack **a, t_stack **b, int size)
@@ -106,6 +110,9 @@ int	quick_sort_b(t_stack **a, t_stack **b, int size)
 	int	nb_elem;
 	int	nb_rota;
 
+	if (is_sorted_desc(*b, size))
+		while (size--)
+			run_command(a, b, "pa");
 	if (size <= 3)
 	{
 		sort_three_stack_b(a, b, size);
@@ -124,5 +131,5 @@ int	quick_sort_b(t_stack **a, t_stack **b, int size)
 	while (nb_rota--)
 		run_command(0, b, "rrb");
 	return (quick_sort_a(a, b, size / 2 + size % 2)
-			&& quick_sort_b(a, b, size / 2));
+		&& quick_sort_b(a, b, size / 2));
 }
