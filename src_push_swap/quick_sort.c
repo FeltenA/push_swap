@@ -32,7 +32,7 @@ static void	sort_three_stack_a(t_stack **a, int size)
 		while (size != 3 || (*a)->num > (*a)->next->num
 			|| (*a)->next->num > (*a)->next->next->num)
 		{
-			if (size == 3 && (*a)->num > (*a)->next->num)
+			if ((*a)->num > (*a)->next->num)
 				run_command(a, 0, "sa");
 			else if (size == 3 && ((*a)->next->next->num < (*a)->num
 					|| (*a)->next->next->num < (*a)->next->num))
@@ -40,8 +40,6 @@ static void	sort_three_stack_a(t_stack **a, int size)
 				run_command(a, 0, "ra");
 				size--;
 			}
-			else if ((*a)->num > (*a)->next->num)
-				run_command(a, 0, "sa");
 			else if (size++)
 				run_command(a, 0, "rra");
 		}
@@ -64,14 +62,13 @@ static void	sort_three_stack_b(t_stack **a, t_stack **b, int size)
 		{
 			if (size == 1 && (*a)->num > (*a)->next->num)
 				run_command(a, 0, "sa");
-			else if (size == 1 || (size >= 2 && (*b)->num > (*b)->next->num)
-				|| (size == 3 && (*b)->next->next->num < (*b)->num))
+			else if (size > 1 && (*b)->num < (*b)->next->num)
+				run_command(0, b, "sb");
+			else
 			{
 				run_command(a, b, "pa");
 				size--;
 			}
-			else
-				run_command(0, b, "sb");
 		}
 	}
 }
