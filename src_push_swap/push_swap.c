@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/24 13:39:51 by afelten           #+#    #+#             */
-/*   Updated: 2022/06/07 13:52:54 by afelten          ###   ########.fr       */
+/*   Updated: 2022/09/17 15:56:37 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ void	ft_lstclear(t_stack **lst);
 int		ft_lstsize(t_stack *lst);
 void	sort_simple(t_stack **a, t_stack **b);
 void	sort_complex(t_stack **a, t_stack **b, int size);
-int	quick_sort_a(t_stack **a, t_stack **b, int size);
+int		quick_sort_a(t_stack **a, t_stack **b, int size);
 
-#include <stdio.h>
-void	print_list(t_stack *a)
+int	check_list(t_stack *a)
 {
-	while (a)
+	while (a && a->next)
 	{
-		printf("%d\n", a->num);
+		if (a->num > a->next->num)
+			return (1);
 		a = a->next;
 	}
+	return (0);
 }
 
 int	main(int argc, char *argv[])
@@ -48,9 +49,9 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 		size = ft_lstsize(a);
-		if (ft_lstsize(a) <= 5)
+		if (check_list(a) && ft_lstsize(a) <= 5)
 			sort_simple(&a, &b);
-		else if (ft_lstsize(a) > 5)
+		else if (check_list(a) && ft_lstsize(a) > 5)
 			quick_sort_a(&a, &b, size);
 		ft_lstclear(&a);
 	}

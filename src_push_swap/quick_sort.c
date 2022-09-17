@@ -6,7 +6,7 @@
 /*   By: afelten <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:44:57 by afelten           #+#    #+#             */
-/*   Updated: 2022/06/27 16:41:48 by afelten          ###   ########.fr       */
+/*   Updated: 2022/09/17 15:55:00 by afelten          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		is_sorted_asc(t_stack *a, int size);
 int		is_sorted_desc(t_stack *a, int size);
 int		ft_lstsize(t_stack *a);
 
-static void	sort_three_stack_a(t_stack **a, int size)
+static int	sort_three_stack_a(t_stack **a, int size)
 {
 	if (size == 2)
 	{
@@ -44,9 +44,10 @@ static void	sort_three_stack_a(t_stack **a, int size)
 				run_command(a, 0, "rra");
 		}
 	}
+	return (1);
 }
 
-static void	sort_three_stack_b(t_stack **a, t_stack **b, int size)
+static int	sort_three_stack_b(t_stack **a, t_stack **b, int size)
 {
 	if (size == 1)
 		run_command(a, b, "pa");
@@ -71,6 +72,7 @@ static void	sort_three_stack_b(t_stack **a, t_stack **b, int size)
 			}
 		}
 	}
+	return (1);
 }
 
 int	quick_sort_a(t_stack **a, t_stack **b, int size)
@@ -82,10 +84,7 @@ int	quick_sort_a(t_stack **a, t_stack **b, int size)
 	if (is_sorted_asc(*a, size))
 		return (1);
 	if (size <= 3)
-	{
-		sort_three_stack_a(a, size);
-		return (1);
-	}
+		return (sort_three_stack_a(a, size));
 	nb_elem = size;
 	nb_rota = 0;
 	median = get_median(*a, size);
@@ -113,10 +112,7 @@ int	quick_sort_b(t_stack **a, t_stack **b, int size)
 		while (size--)
 			run_command(a, b, "pa");
 	if (size <= 3)
-	{
-		sort_three_stack_b(a, b, size);
-		return (1);
-	}
+		return (sort_three_stack_b(a, b, size));
 	nb_elem = size;
 	nb_rota = 0;
 	median = get_median(*b, size);
